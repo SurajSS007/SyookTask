@@ -5,7 +5,6 @@ function App() {
    const [title,setTitle] = useState('');
    const [desc,setDesc] = useState('');
    const [list,setList]= useState([])
-   const [filter, setFilter] = useState('')
 
    useEffect(() => {
     getLocalTodos()
@@ -18,18 +17,6 @@ function App() {
   }, [list])
 
     
-  const style = {
-    color : 'black',
-    padding:'5px'
-}
-
-  const searchhandler = (e) => {
-    console.log(e.target.value);
-    // console.log(list);
-    const filter =list.filter((el) =>el.title == e.target.value )
-    console.log(filter)
-    setFilter(filter)
-  }
 
 
    const saveLocalTodos = ()=>{
@@ -42,7 +29,6 @@ function App() {
       localStorage.setItem('list',JSON.stringify([]));
     }else{
       let todoLocal  = JSON.parse(localStorage.getItem('list'));
-      // console.log(todoLocal);
       setList(todoLocal);
     }
   }
@@ -51,9 +37,7 @@ function App() {
   return (
     <div className="App">
       <Form list={list} setList={setList} desc={desc} setDesc={setDesc} title={title} setTitle={setTitle}/>
-      <h1 style={style}>Lists</h1>
-      <input style={style} onChange={searchhandler} type="text" placeholder="Search.."/>
-      <List filter={filter} setTitle={setTitle} setDesc={setDesc} list={list} setList={setList} />
+      <List  setTitle={setTitle} setDesc={setDesc} list={list} setList={setList} />
     </div>
   );
 }

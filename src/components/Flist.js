@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React from 'react'
 import "./list.css";
 
 function Flist({list,title,desc,setList,id,setDesc,setTitle}) {
@@ -10,7 +10,7 @@ function Flist({list,title,desc,setList,id,setDesc,setTitle}) {
         let x = a.filter((el) =>el.id == id )
         setTitle(x[0].title);
         setDesc(x[0].desc);
-        const index = a.findIndex(list =>  list.id == id);
+        const index = a.findIndex(list =>  list.id === id);
         a.splice(index, 1);
         localStorage.setItem('list', JSON.stringify(a));
         let b = JSON.parse(localStorage.getItem('list'));

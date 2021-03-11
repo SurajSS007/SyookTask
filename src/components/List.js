@@ -1,15 +1,14 @@
-import React,{useState} from 'react'
+import React from 'react'
 import Flist from "./Flist";
 
-function List({list,setList,setTitle,setDesc,filter}) {
+function List({list,setList,setTitle,setDesc}) {
 
-    console.log("p",filter);
+
 
 
     return (
         <div>
 
-  
         <ul>
         {
             list.map((lists) => 
